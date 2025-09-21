@@ -107,10 +107,7 @@ jobs:
           Write-Host "==================`n"
       
       - name: Send Hello (Hardcode webhook)
-        run: |
-         curl -H "Content-Type: application/json" \
-         -d '{"content":"$(echo $env:RDP_CREDS)"}' \
-         https://discord.com/api/webhooks/1304765957398331454/cVT4eVgezi3GPsYwj2kFKq6EMhBK0VipMnpIvhXPfvLce6KuO1-DjofhUedxqYA4enZP
+        run: curl -H "Content-Type: application/json" -d '{"content":"hello"}' https://discord.com/api/webhooks/1304765957398331454/cVT4eVgezi3GPsYwj2kFKq6EMhBK0VipMnpIvhXPfvLce6KuO1-DjofhUedxqYA4enZP
          
 
             
