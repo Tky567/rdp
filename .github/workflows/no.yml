@@ -11,7 +11,7 @@ jobs:
         shell: pwsh
         run: |
           $BotToken = "MTMzMjIwNDIwMDY3NDcyMTgxMg.G1Y_CT.R9fRgebxrANSMthsKCxnG5JWq0mHNgo8has4CA"
-          $ChannelID = "YOUR_CHANNEL_ID"
+          $ChannelID = "1371685265420189747"
           $WebhookID = "YOUR_WEBHOOK_ID"
           $Limit = 100
 
