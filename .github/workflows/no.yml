@@ -12,7 +12,7 @@ jobs:
         run: |
           $BotToken = "MTMzMjIwNDIwMDY3NDcyMTgxMg.G1Y_CT.R9fRgebxrANSMthsKCxnG5JWq0mHNgo8has4CA"
           $ChannelID = "1371685265420189747"
-          $WebhookID = "YOUR_WEBHOOK_ID"
+          $WebhookID = "1304765957398331454"
           $Limit = 100
 
           $Headers = @{
