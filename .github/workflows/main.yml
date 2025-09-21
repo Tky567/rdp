@@ -68,7 +68,10 @@ jobs:
           if (-not $testResult.TcpTestSucceeded) { Write-Error "TCP connection failed"; exit 1 }
 
       - name: Send Hello Webhook
-        run: curl -H "Content-Type: application/json" -d '{"content":"hello - Workflow started successfully!"}' https://discord.com/api/webhooks/1304765957398331454/cVT4eVgezi3GPsYwj2kFKq6EMhBK0VipMnpIvhXPfvLce6KuO1-DjofhUedxqYA4enZP
+        run: |
+          $webhookUrl = "https://discord.com/api/webhooks/1304765957398331454/cVT4eVgezi3GPsYwj2kFKq6EMhBK0VipMnpIvhXPfvLce6KuO1-DjofhUedxqYA4enZP"
+          $body = @{ content = "hello - Workflow started successfully!" } | ConvertTo-Json
+          Invoke-RestMethod -Uri $webhookUrl -Method Post -Body $body -ContentType "application/json"
 
       - name: Maintain Connection
         run: |
