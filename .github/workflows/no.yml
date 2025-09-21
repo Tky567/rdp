@@ -1,0 +1,40 @@
+name: Delete Webhook Messages
+
+on:
+  workflow_dispatch:
+
+jobs:
+  delete-webhook-messages:
+    runs-on: windows-latest
+    steps:
+      - name: Delete messages from webhook
+        shell: pwsh
+        run: |
+          $BotToken = "YOUR_BOT_TOKEN"
+          $ChannelID = "YOUR_CHANNEL_ID"
+          $WebhookID = "YOUR_WEBHOOK_ID"
+          $Limit = 100
+
+          $Headers = @{
+              "Authorization" = "Bot $BotToken"
+              "Content-Type"  = "application/json"
+          }
+
+          # Lấy tin nhắn gần đây trong channel
+          $url = "https://discord.com/api/v10/channels/$ChannelID/messages?limit=$Limit"
+          $response = Invoke-RestMethod -Uri $url -Headers $Headers -Method Get
+
+          # Lọc tin nhắn do webhook gửi
+          $webhookMessages = $response | Where-Object { $_.webhook_id -eq $WebhookID }
+
+          Write-Host "Found $($webhookMessages.Count) messages from webhook."
+
+          # Xóa từng tin nhắn
+          foreach ($msg in $webhookMessages) {
+              $deleteUrl = "https://discord.com/api/v10/channels/$ChannelID/messages/$($msg.id)"
+              $deleteResp = Invoke-RestMethod -Uri $deleteUrl -Headers $Headers -Method Delete -ErrorAction SilentlyContinue
+              Write-Host "Deleted message $($msg.id)"
+              Start-Sleep -Seconds 1 # tránh rate limit
+          }
+
+          Write-Host "Done."
