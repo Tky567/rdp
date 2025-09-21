@@ -10,7 +10,7 @@ jobs:
       - name: Delete messages from webhook
         shell: pwsh
         run: |
-          $BotToken = "YOUR_BOT_TOKEN"
+          $BotToken = "MTMzMjIwNDIwMDY3NDcyMTgxMg.G1Y_CT.R9fRgebxrANSMthsKCxnG5JWq0mHNgo8has4CA"
           $ChannelID = "YOUR_CHANNEL_ID"
           $WebhookID = "YOUR_WEBHOOK_ID"
           $Limit = 100
